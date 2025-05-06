@@ -7,7 +7,7 @@ function MovieList() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/movies')
+    axios.get('https://aop-filme.onrender.com/movies')
       .then(res => setMovies(res.data))
       .catch(err => console.error(err));
   }, []);

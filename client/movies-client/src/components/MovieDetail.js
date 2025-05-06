@@ -10,11 +10,11 @@ function MovieDetail() {
   const [newComment, setNewComment] = useState({ name: '', email: '', text: '' });
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/movies/${id}`)
+    axios.get(`https://aop-filme.onrender.com/movies/${id}`)
       .then(res => setMovie(res.data))
       .catch(err => console.error(err));
 
-    axios.get(`http://localhost:4000/comments/${id}`)
+    axios.get(`https://aop-filme.onrender.com/comments/${id}`)
       .then(res => setComments(res.data))
       .catch(err => console.error(err));
   }, [id]);
@@ -22,7 +22,7 @@ function MovieDetail() {
   const handleAddComment = async () => {
     if (!newComment.name || !newComment.email || !newComment.text) return;
     try {
-      const response = await axios.post('http://localhost:4000/comments', {
+      const response = await axios.post('https://aop-filme.onrender.com/comments', {
         ...newComment,
         movie_id: id
       });
@@ -35,7 +35,7 @@ function MovieDetail() {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:4000/comments/${commentId}`);
+      await axios.delete(`https://aop-filme.onrender.com/comments/${commentId}`);
       setComments(comments.filter(c => c._id !== commentId));
     } catch (err) {
       console.error(err);
